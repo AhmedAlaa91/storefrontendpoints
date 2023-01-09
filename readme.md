@@ -30,19 +30,19 @@ npm run test
 1- Index [token required]
 
 
-![Screenshot](https://github.com/AhmedAlaa91/storefrontendpoints/blob/main/screenshots/picture1.png)
+![Screenshot](./screenshots/Picture1.png)
 
 
 
 
 2-Show [token required]
 
-![Screenshot](https://github.com/AhmedAlaa91/storefrontendpoints/blob/main/screenshots/picture2.png)
+![Screenshot](./screenshots/Picture2.png)
 
 
 3- Create N[token required]
 
-![Screenshot](https://github.com/AhmedAlaa91/storefrontendpoints/blob/main/screenshots/picture3.png)
+![Screenshot](./screenshots/Picture3.png)
 
 
 
@@ -52,19 +52,19 @@ npm run test
 1-	Index
 
 
-![Screenshot](https://github.com/AhmedAlaa91/storefrontendpoints/blob/main/screenshots/picture4.png)
+![Screenshot](./screenshots/Picture4.png)
 
 
 
 2-	Show 
 
 
-![Screenshot](https://github.com/AhmedAlaa91/storefrontendpoints/blob/main/screenshots/picture5.png)
+![Screenshot](./screenshots/Picture5.png)
 
 3-	Create [token required]
 
 
-![Screenshot](https://github.com/AhmedAlaa91/storefrontendpoints/blob/main/screenshots/picture6.png)
+![Screenshot](./screenshots/Picture6.png)
 
 
 
@@ -75,5 +75,4 @@ npm run test
 1-	Current Order by user (args: user id)[token required]
 
 
-![Screenshot](https://github.com/AhmedAlaa91/storefrontendpoints/blob/main/screenshots/picture7.png)
-
+![Screenshot](./screenshots/Picture7.png)
