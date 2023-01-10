@@ -1,9 +1,7 @@
 import { users, user } from '../users';
 
-import bcrypt from 'bcrypt';
 
-const pepper = process.env.BYCRYPT_PASSWORD;
-const saltRounds = '' + process.env.SALT_ROUNDS;
+
 
 const usr = new users();
 
@@ -24,18 +22,43 @@ describe('users Model', () => {
     const result = await usr.resetSeq();
     expect(result).toEqual('seq reset');
   });
+    
 
+
+  let userCreated:user
   it('create method should add a user', async () => {
     const result = await usr.create({
       firstname: 'User one',
       lastname: 'first',
       pwd: 'Password123'
     });
+    userCreated=result
     expect(result).toBeTruthy();
+    
   });
 
   it('Authenticate a user', async () => {
     const result = await usr.authenticate('User one', 'Password123');
     expect(result).toBe('login succesfuly');
   });
+
+ 
+
+  it('show method should show a user', async () => {
+    const result = await usr.show(1);
+    expect(result).toEqual([userCreated]);
+  });
+
+  it('index method should show all users ', async () => {
+    const result = await usr.index();
+    expect(result).toEqual([userCreated]);
+  });
+
+
+
+  
+
 });
+
+
+

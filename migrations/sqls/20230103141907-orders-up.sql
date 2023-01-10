@@ -1,2 +1,8 @@
 /* Replace with your SQL commands *//* Replace with your SQL commands */
-CREATE TABLE orders ( id SERIAL PRIMARY KEY,prod_id integer , CONSTRAINT order_prod_fk FOREIGN KEY (prod_id) REFERENCES  products(id), user_id integer , CONSTRAINT order_user_fk FOREIGN KEY (user_id) REFERENCES users(id), quantity integer, status varchar(20));
+CREATE TABLE orders ( id SERIAL PRIMARY KEY,
+ user_id integer , CONSTRAINT order_user_fk FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
+   status varchar(20));
+
+
+     
+

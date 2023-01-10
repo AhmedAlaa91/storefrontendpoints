@@ -25,7 +25,7 @@ export class users {
   }
 
   async index(): Promise<user[]> {
-    console.log("here")
+ 
     try {
       const conn = await Client.connect();
       const sql =

@@ -32,12 +32,28 @@ http://localhost:3000/currentorders
 - name
 - price
 - [OPTIONAL] category
+products
+(
+    id integer NOT NULL DEFAULT nextval('products_id_seq'::regclass),
+    name character varying(255) COLLATE pg_catalog."default",
+    price integer,
+    category character varying(255) COLLATE pg_catalog."default",
+    CONSTRAINT products_pkey PRIMARY KEY (id)
+)
 
 #### User
 - id
 - firstName
 - lastName
 - password
+users
+(
+    id integer NOT NULL DEFAULT nextval('users_id_seq'::regclass),
+    firstname character varying(255) COLLATE pg_catalog."default",
+    lastname character varying(255) COLLATE pg_catalog."default",
+    pwd character varying(255) COLLATE pg_catalog."default",
+    CONSTRAINT users_pkey PRIMARY KEY (id)
+)
 
 #### Orders
 - id
@@ -45,3 +61,27 @@ http://localhost:3000/currentorders
 - quantity of each product in the order
 - user_id
 - status of order (active or complete)
+orders
+(
+    id integer NOT NULL DEFAULT nextval('orders_id_seq'::regclass),
+    user_id integer,
+    status character varying(20) COLLATE pg_catalog."default",
+    CONSTRAINT orders_pkey PRIMARY KEY (id),
+    CONSTRAINT order_user_fk FOREIGN KEY (user_id)
+        REFERENCES public.users (id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+)
+orders_products
+(
+    id integer NOT NULL DEFAULT nextval('orders_products_id_seq'::regclass),
+    quantity integer,
+    order_id integer,
+    prod_id integer,
+    CONSTRAINT orders_products_pkey PRIMARY KEY (id),
+    CONSTRAINT order_prods_fk FOREIGN KEY (prod_id)
+        REFERENCES public.products (id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+)
+

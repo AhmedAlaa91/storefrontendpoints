@@ -2,6 +2,7 @@ import express from 'express';
 import productRoutes from '../src/handlers/products_routes';
 import userRoutes from '../src/handlers/users_routes';
 import orderRoutes from '../src/handlers/orders_routes';
+import orderproductsRoutes from '../src/handlers/orders_products_routes';
 
 const app = express();
 const port = 3000;
@@ -15,6 +16,7 @@ app.get('/', async (_req, res) => {
 productRoutes(app);
 userRoutes(app);
 orderRoutes(app);
+orderproductsRoutes(app);
 
 app.listen(port, () => {
   console.log(` listening on port ${port}`);
