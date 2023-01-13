@@ -1,8 +1,12 @@
 import { OrderProduct, OrderProducts } from '../orders_products';
-
+import supertest from 'supertest';
 
 
 const ord = new OrderProducts();
+
+
+
+
 
 describe('orders products Model', () => {
   it('should have an index method', () => {
@@ -31,6 +35,9 @@ describe('orders products Model', () => {
     );
    
   });
+
+
+  
 
 });
 

@@ -1,8 +1,9 @@
 import express from 'express';
-import productRoutes from '../src/handlers/products_routes';
-import userRoutes from '../src/handlers/users_routes';
-import orderRoutes from '../src/handlers/orders_routes';
-import orderproductsRoutes from '../src/handlers/orders_products_routes';
+require("dotenv").config();
+import productRoutes from '././handlers/products_routes';
+import userRoutes from '././handlers/users_routes';
+import orderRoutes from '././handlers/orders_routes';
+import orderproductsRoutes from '././handlers/orders_products_routes';
 
 const app = express();
 const port = 3000;

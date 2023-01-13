@@ -21,6 +21,63 @@ npm run test
  npm run start 
 
 
+# Database setup
+
+install postgres from (https://www.postgresql.org/download/)
+
+set admin users and password 
+
+run pgadmin tool and create db for test (POSTGRES_DB_TEST) and one for dev (POSTGRES_DB)
+
+set default port to :5432
+
+create database.ts file in main directory with the following code 
+
+
+import dotenv from 'dotenv';
+import { Pool } from 'pg';
+
+dotenv.config();
+const {
+  POSTGRES_HOST,
+  POSTGRES_DB,
+  POSTGRES_DB_TEST,
+  POSTGRES_USER,
+  POSTGRES_PASSWORD,
+  ENV
+} = process.env;
+
+let Client = new Pool();
+console.log(ENV);
+
+if (ENV === 'dev') {
+  Client = new Pool({
+    host: POSTGRES_HOST,
+    database: POSTGRES_DB_TEST,
+    user: POSTGRES_USER,
+    password: POSTGRES_PASSWORD
+  });
+}
+
+if (ENV === 'test') {
+  Client = new Pool({
+    host: POSTGRES_HOST,
+    database: POSTGRES_DB,
+    user: POSTGRES_USER,
+    password: POSTGRES_PASSWORD
+  });
+}
+
+export default Client;
+
+
+
+yarn up - > will create db from migrations files
+
+yarn start - > will run the app on localhost:3000
+
+
+
 # APIs 
 
 # you need to create user to generate token  , i created user method first then added token method to check the token

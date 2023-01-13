@@ -18,6 +18,11 @@ describe('users Model', () => {
     expect(usr.create).toBeDefined();
   });
 
+  it('should have an authenticate method', () => {
+    expect(usr.authenticate).toBeDefined();
+  });
+
+
   it('reset sequence user table', async () => {
     const result = await usr.resetSeq();
     expect(result).toEqual('seq reset');

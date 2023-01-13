@@ -37,7 +37,6 @@ const showActive = async (req: Request, res: Response) => {
     }
 
     userId = decoded.usr.id;
-    console.log(userId);
   } catch (err) {
     res.status(401);
     res.json('invalid token');
