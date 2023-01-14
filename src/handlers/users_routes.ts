@@ -79,18 +79,11 @@ const create = async (req: Request, res: Response) => {
 };
 
 const login = async (req: Request, res: Response) => {
+
   try {
-    const authorizationHeader = req.headers.authorization!;
-    const token = authorizationHeader.split(' ')[1];
-    jwt.verify(token, process.env.TOKEN_SECRET!);
-  } catch (err) {
-    res.status(401);
-    res.json('invalid token');
-    return;
-  }
-  try {
-    const newProd = await u.authenticate(req.body.firstName, req.body.pwd);
-    res.json(newProd);
+    const userloged = await u.authenticate(req.body.firstname, req.body.pwd);
+    let token = jwt.sign({ usr: userloged }, process.env.TOKEN_SECRET!);
+    res.json(token);
   } catch (err) {
     res.status(400);
     res.json(err);

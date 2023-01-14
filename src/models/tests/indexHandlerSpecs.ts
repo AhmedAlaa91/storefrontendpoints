@@ -3,52 +3,60 @@ import app from "../..";
 import supertest from 'supertest';
 
 const request = supertest(app);
+describe('Endpoints Test responses', () => {
+let token =''
+beforeAll(async () => {
+  const response = await supertest(app).post('/login').send({  
+    "firstname": "User one",
+    "pwd": "Password123"
+})
+  .set("Accept", "application/json");
+  token = response.body;
+  
+});
 
-describe('endpoint Test currentorders  responses', () => {
-    it('gets the api endpoint', async () => {
 
-      const token= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3IiOnsiaWQiOjEsImZpcnN0bmFtZSI6ImxpbG8iLCJsYXN0bmFtZSI6ImFsYWEiLCJwd2QiOiIkMmIkMTAkNXJoZ0F1RVNlb2I4QzJTN28vd3J6dVVtNU5jaUZMSDZxakhEakhJTEhZUVFUS1dUVGI5bkcifSwiaWF0IjoxNjczMzQ4ODUyfQ.sVHjXz3EJ6ooe7CgK_xypbORcjdRR1MPRrUHuB-nMJ8'
-       
+
+
+    it('current orders api endpoint', async () => {
+
+
       const response = await request.get(
         '/currentorders'
       ).set("Authorization", "bearer " + token);
       expect(response.statusCode).toBe(200);
     });
-  });
+  
 
 
-  describe('endpoint Test addorder  responses', () => {
-    it('gets the api endpoint', async () => {
+    it('addorder api endpoint', async () => {
 
-      const token= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3IiOnsiaWQiOjEsImZpcnN0bmFtZSI6ImxpbG8iLCJsYXN0bmFtZSI6ImFsYWEiLCJwd2QiOiIkMmIkMTAkNXJoZ0F1RVNlb2I4QzJTN28vd3J6dVVtNU5jaUZMSDZxakhEakhJTEhZUVFUS1dUVGI5bkcifSwiaWF0IjoxNjczMzQ4ODUyfQ.sVHjXz3EJ6ooe7CgK_xypbORcjdRR1MPRrUHuB-nMJ8'
-       
+
       const response = await request.post(
         '/addorder'
       ).set("Authorization", "bearer " + token);
       expect(response.statusCode).toBe(200);
     });
-  });
+  
 
 
 
-  describe('endpoint Test getorders  responses', () => {
-    it('gets the api endpoint', async () => {
+ 
+    it('getorders api endpoint', async () => {
 
-      const token= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3IiOnsiaWQiOjEsImZpcnN0bmFtZSI6ImxpbG8iLCJsYXN0bmFtZSI6ImFsYWEiLCJwd2QiOiIkMmIkMTAkNXJoZ0F1RVNlb2I4QzJTN28vd3J6dVVtNU5jaUZMSDZxakhEakhJTEhZUVFUS1dUVGI5bkcifSwiaWF0IjoxNjczMzQ4ODUyfQ.sVHjXz3EJ6ooe7CgK_xypbORcjdRR1MPRrUHuB-nMJ8'
-       
+
       const response = await request.get(
         '/orders'
       ).set("Authorization", "bearer " + token);
       expect(response.statusCode).toBe(200);
     });
-  });
+  
 
 
-  describe('endpoint Test addproducts  responses', () => {
-    it('gets the api endpoint', async () => {
 
-      const token= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3IiOnsiaWQiOjEsImZpcnN0bmFtZSI6ImxpbG8iLCJsYXN0bmFtZSI6ImFsYWEiLCJwd2QiOiIkMmIkMTAkNXJoZ0F1RVNlb2I4QzJTN28vd3J6dVVtNU5jaUZMSDZxakhEakhJTEhZUVFUS1dUVGI5bkcifSwiaWF0IjoxNjczMzQ4ODUyfQ.sVHjXz3EJ6ooe7CgK_xypbORcjdRR1MPRrUHuB-nMJ8'
-       
+    it('addproducts api endpoint', async () => {
+
+
       const response = await request.post(
         '/products'
       ).set("Authorization", "bearer " + token).send({
@@ -59,12 +67,11 @@ describe('endpoint Test currentorders  responses', () => {
       .set("Accept", "application/json");
       expect(response.statusCode).toBe(200);
     });
-  });
 
 
 
-    describe('endpoint Test getallproducts  responses', () => {
-      it('gets the api endpoint', async () => {
+
+      it('getproducts api endpoint', async () => {
   
 
         const response = await request.get(
@@ -72,11 +79,11 @@ describe('endpoint Test currentorders  responses', () => {
         )
         expect(response.statusCode).toBe(200);
       });
-    });
+  
   
 
-    describe('endpoint Test getspecificproduct  responses', () => {
-      it('gets the api endpoint', async () => {
+  
+      it('getproductperid api endpoint', async () => {
   
 
         const response = await request.get(
@@ -86,33 +93,31 @@ describe('endpoint Test currentorders  responses', () => {
         .set("Accept", "application/json");
         expect(response.statusCode).toBe(200);
       });
-    });
+ 
 
 
-    describe('endpoint Test login  responses', () => {
-      it('gets the api endpoint', async () => {
+
+      it('login api endpoint', async () => {
   
-        const token= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3IiOnsiaWQiOjEsImZpcnN0bmFtZSI6ImxpbG8iLCJsYXN0bmFtZSI6ImFsYWEiLCJwd2QiOiIkMmIkMTAkNXJoZ0F1RVNlb2I4QzJTN28vd3J6dVVtNU5jaUZMSDZxakhEakhJTEhZUVFUS1dUVGI5bkcifSwiaWF0IjoxNjczMzQ4ODUyfQ.sVHjXz3EJ6ooe7CgK_xypbORcjdRR1MPRrUHuB-nMJ8'
-         
+  
         const response = await request.post(
           '/login'
-        ).set("Authorization", "bearer " + token).send({
+        ).send({
           "firstname": "User one",
-          "pwd": "Lilo@2023"
+          "pwd": "alaa"
         })
         .set("Accept", "application/json");
         expect(response.statusCode).toBe(200);
       });
 
-  });
 
 
 
-  describe('endpoint Test createuser  responses', () => {
-    it('gets the api endpoint', async () => {
 
-      const token= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3IiOnsiaWQiOjEsImZpcnN0bmFtZSI6ImxpbG8iLCJsYXN0bmFtZSI6ImFsYWEiLCJwd2QiOiIkMmIkMTAkNXJoZ0F1RVNlb2I4QzJTN28vd3J6dVVtNU5jaUZMSDZxakhEakhJTEhZUVFUS1dUVGI5bkcifSwiaWF0IjoxNjczMzQ4ODUyfQ.sVHjXz3EJ6ooe7CgK_xypbORcjdRR1MPRrUHuB-nMJ8'
-       
+ 
+    it('adduser api endpoint', async () => {
+
+
       const response = await request.post(
         '/users'
       ).set("Authorization", "bearer " + token).send({
@@ -124,15 +129,13 @@ describe('endpoint Test currentorders  responses', () => {
       expect(response.statusCode).toBe(200);
     });
 
-});
 
 
 
-describe('endpoint Test getspecificuser  responses', () => {
-  it('gets the api endpoint', async () => {
 
-    const token= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3IiOnsiaWQiOjEsImZpcnN0bmFtZSI6ImxpbG8iLCJsYXN0bmFtZSI6ImFsYWEiLCJwd2QiOiIkMmIkMTAkNXJoZ0F1RVNlb2I4QzJTN28vd3J6dVVtNU5jaUZMSDZxakhEakhJTEhZUVFUS1dUVGI5bkcifSwiaWF0IjoxNjczMzQ4ODUyfQ.sVHjXz3EJ6ooe7CgK_xypbORcjdRR1MPRrUHuB-nMJ8'
-     
+  it('getuser the api endpoint', async () => {
+
+
     const response = await request.get(
       '/users'
     ).set("Authorization", "bearer " + token).send({
@@ -142,15 +145,14 @@ describe('endpoint Test getspecificuser  responses', () => {
     expect(response.statusCode).toBe(200);
   });
 
-});
 
 
 
-describe('endpoint Test getallusers  responses', () => {
-  it('gets the api endpoint', async () => {
 
-    const token= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3IiOnsiaWQiOjEsImZpcnN0bmFtZSI6ImxpbG8iLCJsYXN0bmFtZSI6ImFsYWEiLCJwd2QiOiIkMmIkMTAkNXJoZ0F1RVNlb2I4QzJTN28vd3J6dVVtNU5jaUZMSDZxakhEakhJTEhZUVFUS1dUVGI5bkcifSwiaWF0IjoxNjczMzQ4ODUyfQ.sVHjXz3EJ6ooe7CgK_xypbORcjdRR1MPRrUHuB-nMJ8'
-     
+
+  it('getusers api endpoint', async () => {
+
+
     const response = await request.get(
       '/users'
     ).set("Authorization", "bearer " + token);

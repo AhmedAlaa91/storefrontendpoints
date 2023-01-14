@@ -84,11 +84,19 @@ export class users {
     const sql = `SELECT pwd FROM users WHERE firstName='${firstName}'`;
     const result = await conn.query(sql);
 
+
     if (result.rows.length) {
       const user = result.rows[0];
-
+ 
+      console.log(bcrypt.compareSync(password + pepper, user.pwd))
       if (bcrypt.compareSync(password + pepper, user.pwd)) {
-        return 'login succesfuly';
+        console.log("right")
+        const sql2 = `SELECT * FROM users WHERE firstName='${firstName}'`;
+        const result = await conn.query(sql2);
+        const data =result.rows[0]
+     
+
+        return data;
       }
     }
 

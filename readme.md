@@ -1,8 +1,43 @@
 STOREFRONT  
 
-ENVIRONMENT VARIABLES A
 
-create an environemnt file  .env at the root of the project:
+
+# to test the app
+npm run test 
+
+# to run the app
+ npm run start 
+
+
+# Database setup
+
+packages : 
+
+-npm install db-migrate
+
+-npm install pg 
+
+install postgres on windows from (https://www.postgresql.org/download/)
+
+set admin users and password 
+
+run pgadmin tool 
+
+![Screenshot](./screenshots/db1.png)
+
+
+ create db for test (POSTGRES_DB_TEST) and one for dev (POSTGRES_DB)
+
+![Screenshot](./screenshots/db2.png)
+
+create user to login to the db
+
+
+![Screenshot](./screenshots/db3.png)
+
+
+to connect to db 
+# first : create an environemnt file  .env at the root of the project:
 
 POSTGRES_HOST=127.0.0.1
 POSTGRES_DB=store_db
@@ -14,24 +49,9 @@ BCRYPT_PASSWORD=your-secret-PASSWORD
 SALT_ROUNDS=10
 TOKEN_SECRET=******
 
-# to test the app
-npm run test 
-
-# to run the app
- npm run start 
-
-
-# Database setup
-
-install postgres from (https://www.postgresql.org/download/)
-
-set admin users and password 
-
-run pgadmin tool and create db for test (POSTGRES_DB_TEST) and one for dev (POSTGRES_DB)
-
 set default port to :5432
 
-create database.ts file in main directory with the following code 
+# second : create database.ts file in main directory with the following code 
 
 
 import dotenv from 'dotenv';
