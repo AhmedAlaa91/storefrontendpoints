@@ -10,7 +10,9 @@
     "build": "npx tsc",
     "jasmine": "jasmine",
     "test": "ENV=test db-migrate --env test up && npm run jasmine -ts && db-migrate db:drop test",
-    "start": "nodemon src/index.ts"
+    "start": "nodemon src/index.ts",
+    "backend:install": "cd storefront && npm install",
+    "backend:build": "cd storefront && npm run build"
   },
   "author": "",
   "license": "ISC",
