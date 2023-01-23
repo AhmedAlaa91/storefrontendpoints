@@ -12,7 +12,9 @@
     "test": "ENV=test db-migrate --env test up && npm run jasmine -ts && db-migrate db:drop test",
     "start": "nodemon src/index.ts",
     "backend:install": "npm install",
-    "backend:build": "npm run build"
+    "backend:build": "npm run build",
+    "deploy":"chmod +x bin/deploy.sh && bin/deploy.sh",
+    "backend:deploy": "npm run deploy"
   },
   "author": "",
   "license": "ISC",
